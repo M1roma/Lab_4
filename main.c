@@ -6,11 +6,11 @@ int main() {
     int rows_a = 0, cols_a = 0;
     int rows_b = 0, cols_b = 0;
 
-    // Введення розмірів для матриці A
+    /// Р’РІРµРґРµРЅРЅСЏ СЂРѕР·РјС–СЂС–РІ РґР»СЏ РјР°С‚СЂРёС†С– A
     printf("Enter rows and cols for Matrix A: ");
     scanf("%d %d", &rows_a, &cols_a);
 
-    // Створення та введення елементів матриці A
+    // РЎС‚РІРѕСЂРµРЅРЅСЏ С‚Р° РІРІРµРґРµРЅРЅСЏ РµР»РµРјРµРЅС‚С–РІ РјР°С‚СЂРёС†С– A
     int** A = create_matrix(rows_a, cols_a);
     printf("Enter elements for Matrix A (%dx%d):\n", rows_a, cols_a);
     for (int i = 0; i < rows_a; i++) {
@@ -20,11 +20,11 @@ int main() {
         }
     }
 
-    // Введення розмірів для матриці B
+    // Р’РІРµРґРµРЅРЅСЏ СЂРѕР·РјС–СЂС–РІ РґР»СЏ РјР°С‚СЂРёС†С– B
     printf("\nEnter rows and cols for Matrix B: ");
     scanf("%d %d", &rows_b, &cols_b);
 
-    // Створення та введення елементів матриці B
+    // РЎС‚РІРѕСЂРµРЅРЅСЏ С‚Р° РІРІРµРґРµРЅРЅСЏ РµР»РµРјРµРЅС‚С–РІ РјР°С‚СЂРёС†С– B
     int** B = create_matrix(rows_b, cols_b);
     printf("Enter elements for Matrix B (%dx%d):\n", rows_b, cols_b);
     for (int i = 0; i < rows_b; i++) {
@@ -34,14 +34,14 @@ int main() {
         }
     }
 
-    // виведення вхідних матриць
+   // РІРёРІРµРґРµРЅРЅСЏ РІС…С–РґРЅРёС… РјР°С‚СЂРёС†СЊ
     printf("\nMatrix A:\n");
     print_matrix(A, rows_a, cols_a);
 
     printf("\nMatrix B:\n");
     print_matrix(B, rows_b, cols_b);
 
-    // Max та Min нижче діагоналі (працює для квадратної A)
+    // Max С‚Р° Min РЅРёР¶С‡Рµ РґС–Р°РіРѕРЅР°Р»С– (РїСЂР°С†СЋС” РґР»СЏ РєРІР°РґСЂР°С‚РЅРѕС— A)
     if (rows_a == cols_a && rows_a > 1) {
         int max_val = 0, min_val = 0;
         max_min(A, rows_a, &max_val, &min_val);
@@ -50,12 +50,12 @@ int main() {
         printf("\nMatrix A is not square or too small for diagonal check.\n");
     }
 
-    // Транспонування B
+    // С‚СЂР°РЅСЃРїРѕС‚СѓРІР°РЅРЅСЏ B
     int** TransB = transpose_b(B, rows_b, cols_b);
     printf("\nTransposed Matrix B:\n");
     print_matrix(TransB, cols_b, rows_b);
 
-    // Множення A * B
+    // РњРЅРѕР¶РµРЅРЅСЏ A * B
     int** C = mult_a_b(A, rows_a, cols_a, B, rows_b, cols_b);
     if (C != NULL) {
         printf("\nResult Matrix C (A * B):\n");
@@ -65,7 +65,7 @@ int main() {
         printf("\nCannot multiply matrices A and B (cols_A != rows_B).\n");
     }
 
-    // Звільнення пам'яті
+    // Р—РІС–Р»СЊРЅРµРЅРЅСЏ РїР°Рј'СЏС‚С–
     free_matrix(A, rows_a);
     free_matrix(B, rows_b);
     free_matrix(TransB, cols_b);
