@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "matrix.h"
 
-// 1. Створення динамічної матриці
+//  РЎС‚РІРѕСЂРµРЅРЅСЏ РґРёРЅР°РјС–С‡РЅРѕС— РјР°С‚СЂРёС†С–
 int** create_matrix(int rows, int cols) {
     int** m = (int**)malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++) {
@@ -11,7 +11,7 @@ int** create_matrix(int rows, int cols) {
     return m;
 }
 
-// 2. Звільнення пам'яті
+//  Р—РІС–Р»СЊРЅРµРЅРЅСЏ РїР°Рј'СЏС‚С–
 void free_matrix(int** m, int rows) {
     for (int i = 0; i < rows; i++) {
         free(m[i]);
@@ -19,7 +19,7 @@ void free_matrix(int** m, int rows) {
     free(m);
 }
 
-// 3. Друк матриці
+//  Р”СЂСѓРє РјР°С‚СЂРёС†С–
 void print_matrix(int** m, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -29,15 +29,15 @@ void print_matrix(int** m, int rows, int cols) {
     }
 }
 
-// 4. Пошук max та min нижче діагоналі
+//  РџРѕС€СѓРє max С‚Р° min РЅРёР¶С‡Рµ РґС–Р°РіРѕРЅР°Р»С–
 void max_min(int** A, int n, int* max_a, int* min_a) {
-    // Перший елемент під діагоналлю — це A[1][0]
+    // ГЏГҐГ°ГёГЁГ© ГҐГ«ГҐГ¬ГҐГ­ГІ ГЇВіГ¤ Г¤ВіГ ГЈГ®Г­Г Г«Г«Гѕ вЂ” Г¶ГҐ A[1][0]
     *max_a = A[1][0];
     *min_a = A[1][0];
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (i > j) { // Умова "нижче головної діагоналі"
+            if (i > j) { // Г“Г¬Г®ГўГ  "Г­ГЁГ¦Г·ГҐ ГЈГ®Г«Г®ГўГ­Г®Вї Г¤ВіГ ГЈГ®Г­Г Г«Ві"
                 if (A[i][j] > *max_a) *max_a = A[i][j];
                 if (A[i][j] < *min_a) *min_a = A[i][j];
             }
@@ -45,7 +45,7 @@ void max_min(int** A, int n, int* max_a, int* min_a) {
     }
 }
 
-// 5. Транспонування (міняємо рядки та стовпці місцями)
+//  РўСЂР°РЅСЃРїРѕРЅСѓРІР°РЅРЅСЏ (РјС–РЅСЏС”РјРѕ СЂСЏРґРєРё С‚Р° СЃС‚РѕРІРїС†С– РјС–СЃС†СЏРјРё)
 int** transpose_b(int** B, int n, int m) {
     int** T = create_matrix(m, n);
     for (int i = 0; i < n; i++) {
@@ -56,9 +56,9 @@ int** transpose_b(int** B, int n, int m) {
     return T;
 }
 
-// 6. Множення A * B
+//  РњРЅРѕР¶РµРЅРЅСЏ A * B
 int** mult_a_b(int** A, int rA, int cA, int** B, int rB, int cB) {
-    if (cA != rB) return NULL; // Перевірка: стовпці A мають дорівнювати рядкам B
+    if (cA != rB) return NULL; // ГЏГҐГ°ГҐГўВіГ°ГЄГ : Г±ГІГ®ГўГЇГ¶Ві A Г¬Г ГѕГІГј Г¤Г®Г°ВіГўГ­ГѕГўГ ГІГЁ Г°ГїГ¤ГЄГ Г¬ B
 
     int** C = create_matrix(rA, cB);
     for (int i = 0; i < rA; i++) {
